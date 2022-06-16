@@ -1,0 +1,12 @@
+.home {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &__content {
+        padding-top: 50px;
+        &-title {
+            font-size: 40px;
+            font-weight: 900;
+        }
+    }
+}

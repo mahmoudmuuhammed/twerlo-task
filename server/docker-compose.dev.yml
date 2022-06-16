@@ -1,0 +1,21 @@
+version: "3"
+services:
+  twerlo-image:
+    build: 
+      context: .
+      target: development
+    volumes:
+      - .:/twerlo
+      - /twerlo/node_modules
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - DB_PORT=27017
+      - DB_IP=mongo
+    command: npm run start:dev # Alter the command
+  mongo:
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root

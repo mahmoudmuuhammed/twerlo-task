@@ -1,0 +1,33 @@
+.dashboard {
+    &__nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        &-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-username {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        &-list {
+            display: flex;
+
+            &__item {
+                list-style: none;
+                padding: 10px;
+            }
+
+            &__link {
+                font-size: 18px;
+                color: #000;
+                font-weight: 700;
+                text-decoration: none;
+            }
+        }
+    }
+}

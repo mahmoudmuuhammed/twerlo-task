@@ -1,0 +1,36 @@
+.signup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    &__form {
+        width: 330px;
+        display: flex;
+        flex-direction: column;
+        &-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            &__label {
+                font-weight: 700;
+                font-size: 18px;
+            }
+
+            &__control {
+                padding: 10px;
+                border-radius: 4px;
+            }
+        }
+
+        &-submit {
+            background-color: transparent;
+            border-radius: 2px;
+            outline: none;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+}

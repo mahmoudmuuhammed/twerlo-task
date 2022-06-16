@@ -1,0 +1,9 @@
+version: "3"
+services:
+  twerlo-image:
+    build: 
+      context: .
+      target: production
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
