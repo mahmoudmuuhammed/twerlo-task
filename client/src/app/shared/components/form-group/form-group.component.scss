@@ -1,0 +1,26 @@
+.formg {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    &__label {
+        font-size: 13px;
+        font-weight: 400;
+        color: #34414f;
+        margin-bottom: 8px;
+    }
+
+    &__control {
+        width: 100%;
+        height: 40px;
+        border-radius: 4px;
+        background-color: rgba(52,65,79,.08);
+        border: 1px solid transparent;
+        outline: none;
+        padding: 11px 12px;
+        font-size: 16px;
+        color: #34414f;
+        font-weight: 400;
+    }
+}

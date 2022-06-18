@@ -1,0 +1,44 @@
+.dashboard {
+    &__nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 40px;
+        width: 100%;
+
+        &-user {
+            color: #34414f;
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-list {
+            display: flex;
+            align-items: center;
+
+            &__item {
+                list-style: none;
+                padding: 10px;
+
+                &--custom {
+                    background-color: rgb(33,178,104);
+                    a {
+                        color: #fff;
+                    }
+                    border-radius: 4px;
+                    width: 100px;
+                    text-align: center;
+                }
+            }
+
+            &__link {
+                text-decoration: none;
+                color: #34414f;
+                font-size: 15px;
+                font-weight: 500;
+            }
+        }
+    }
+}

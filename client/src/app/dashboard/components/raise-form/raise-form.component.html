@@ -1,0 +1,37 @@
+<form class="raise__form">
+    <div class="raise__form-group">
+        <label for="inc-type">Incident Type</label>
+        <select name="incident-type" id="inc-type" class="raise__form-group__drdown">
+            <option value="">Select the type of Incident</option>
+            <option value="">Low</option>
+            <option value="">High</option>
+            <option value="">Very High</option>
+            <option value="">Top</option>
+        </select>
+    </div>
+    <app-form-group 
+        type="text" 
+        label="Incident Title" 
+        placeholder="Enter Incident title"></app-form-group>
+    <div class="raise__form-group">
+        <textarea 
+            name="incident-desc"
+            id="inc-desc"
+            cols="30"
+            rows="4"
+            class="raise__form-group__textarea" placeholder="Enter the Incident description"></textarea>
+    </div>
+    <div class="raise__form-group">
+        <label for="inc-type">Assign to</label>
+        <select name="incident-type" id="inc-type" class="raise__form-group__drdown">
+            <option value="">Low</option>
+            <option value="">High</option>
+            <option value="">Very High</option>
+            <option value="">Top</option>
+        </select>
+    </div>
+    <app-form-group type="date" label="When it occurred?" placeholder=""></app-form-group>
+    <app-form-group type="text" label="Where it occurred?" placeholder="Where it occurred?"></app-form-group>
+
+    <button class="raise__form-submit">Create an incident</button>
+</form>

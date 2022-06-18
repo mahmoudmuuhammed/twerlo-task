@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateIncidentComponent } from './dashboard/create-incident/create-incident.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HomeComponent } from './landing/home/home.component';
-import { LandingComponent } from './landing/landing.component';
-import { SigninComponent } from './landing/signin/signin.component';
-import { SignupComponent } from './landing/signup/signup.component';
+
+import { DashboardComponent } from './dashboard/containers/dashboard/dashboard.component';
+import { IncidentsComponent } from './dashboard/containers/incidents/incidents.component';
+import { RaiseIncidentComponent } from './dashboard/containers/raise-incident/raise-incident.component';
+import { HomeComponent } from './landing/components/home/home.component';
+import { LandingComponent } from './landing/containers/landing/landing.component';
+import { LoginComponent } from './landing/containers/login/login.component';
+import { RegisterComponent } from './landing/containers/register/register.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent, children: [
     { path: '', component: HomeComponent },
-    { path: 'signup', component: SignupComponent },
-    { path: 'signin', component: SigninComponent }
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent }
   ] },
   { path: 'dashboard', component: DashboardComponent, children: [
-    { path: 'create-incident', component: CreateIncidentComponent }
+    { path: '', component: IncidentsComponent },
+    { path: 'create-incident', component: RaiseIncidentComponent }
   ] }
 ];
 

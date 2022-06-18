@@ -3,7 +3,7 @@ import { ISignupDTO, ISigninDTO, IUser } from '../interfaces/user';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import config from '../config';
-
+import { BadRequestError } from '../api/errors/bad-request-error';
 
 @Service()
 export class AuthService {
@@ -11,55 +11,47 @@ export class AuthService {
 
 
     async signup(signupDto: ISignupDTO) {
-        try {
-            const checkUser = await this.userModel.findOne({ identityNo: signupDto.identityNo });
+        const checkUser = await this.userModel.findOne({ identityNo: signupDto.identityNo });
 
-            if(checkUser) {
-                throw new Error('This user already exist');
-            }
-
-            const password = await this.hashPassword(signupDto.password);
-
-            const role = await this.userModel.countDocuments() === 0 ? 'Admin' : 'User';
-
-            const user = await this.userModel.create({
-                ...signupDto,
-                password,
-                role
-            });
-
-            const token = this.generateToken(user);
-
-            const record = await user.save();
-
-            return { record, token };
-
-        } catch(error) {
-            console.log(error);
+        if(checkUser) {
+            throw new Error('This user already exist');
         }
+
+        const password = await this.hashPassword(signupDto.password);
+
+        const role = await this.userModel.countDocuments() === 0 ? 'Admin' : 'User';
+
+        const user = await this.userModel.create({
+            ...signupDto,
+            password,
+            role
+        });
+
+        const token = this.generateToken(user);
+
+        const record = await user.save();
+
+        return { record, token };
+
     }
 
     async signin(signinDto: ISigninDTO) {
-        try {
-            const userRecord = await this.userModel.findOne({ identityNo: signinDto.identityNo });
+        const userRecord = await this.userModel.findOne({ identityNo: signinDto.identityNo });
 
-            if(!userRecord) {
-                throw new Error('Identity no or password incorrect');
-            }
-
-            const validatePassword = await this.comparePassword(signinDto.password, userRecord.password);
-
-            if(!validatePassword) {
-                throw new Error('Identity no or password incorrect');
-            }
-
-            const token = this.generateToken(userRecord);
-
-            return { userRecord, token };
-
-        } catch(error) {
-            console.log(error);
+        if(!userRecord) {
+            throw new BadRequestError('Identity no or password incorrect');
         }
+
+        const validatePassword = await this.comparePassword(signinDto.password, userRecord.password);
+
+        if(!validatePassword) {
+            throw new BadRequestError('Identity no or password incorrect');
+        }
+
+        const token = this.generateToken(userRecord);
+
+        return { userRecord, token };
+
     }
 
     // helpers methods ...

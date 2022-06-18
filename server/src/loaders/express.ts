@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import config from '../config';
 import appRoutes from '../api/routes';
+import errorHandler from '../api/middlewares/error-handler';
 
 
 export default ({ app }: { app: express.Application }) => {
@@ -15,4 +16,6 @@ export default ({ app }: { app: express.Application }) => {
     app.use(express.json());
 
     app.use(config.api.prefix, appRoutes());
+
+    app.use(errorHandler);
 }
